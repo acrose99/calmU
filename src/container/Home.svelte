@@ -57,7 +57,7 @@
             window.document.body.classList.toggle('whiteNoise-mode');
         }
 
-        if (type === "None" || "Default" || "Space" || "Ocean" || "Office" || "Library" || "Train") {
+        if (type === "None" || type === "Fan" || type === "Default" || type === "Space" || type === "Ocean" || type ==="Office" || type ===  "Library" || type === "Train") {
             window.document.body.classList.toggle('blue-mode');
         }
         if (type === "City") {

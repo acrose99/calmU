@@ -3,6 +3,7 @@
     import BigCalmus from "./BigCalmus.svelte";
     import {fade, fly, crossfade, scale, slide} from 'svelte/transition';
     import { linear } from 'svelte/easing';
+    import { tick } from 'svelte';
 
     import { createEventDispatcher } from 'svelte';
 
@@ -17,20 +18,20 @@
             calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPSpace.png"
         },
         {
-            calmusType: "Random", calmusIMG: "../images/Calmus/CalmusDefault.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPDefault.png"
-        },
-        {
             calmusType: "Ocean", calmusIMG: "../images/Calmus/CalmusOcean.png",
             calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPOcean.png"
         },
         {
-            calmusType: "City", calmusIMG: "../images/Calmus/CalmusCity.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPCity.png"
-        },
-        {
             calmusType: "Forest", calmusIMG: "../images/Calmus/CalmusForest.png",
             calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPForest.png"
+        },
+        {
+            calmusType: "Fan", calmusIMG: "../images/Calmus/CalmusDefault.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPDefault.png"
+        },
+        {
+            calmusType: "City", calmusIMG: "../images/Calmus/CalmusCity.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPCity.png"
         },
         {
             calmusType: "White Noise", calmusIMG: "../images/Calmus/CalmusWhiteNoise.png",
@@ -58,6 +59,7 @@
         },
     ]
     function handleMousemoveLeft() {
+        playing = false;
         if (left === 0) { //Todo
             mid = 0;
             left = 10;
@@ -85,22 +87,28 @@
             type: Calmuses[mid].calmusType
         });
     }
-    function spin(node, { duration }) {
-        return {
-            duration,
-            css: t => {
-                const eased = linear(t);
-
-                return `
-					transform: rotate(${eased * 1080}deg);`
-            }
-        };
+    function handleMousemoveCenter() {
+        // console.log("Help");
+        dispatch('notify', {
+            type: Calmuses[mid].calmusType
+        });
     }
-
     function handleMousemoveRight() {
+        playing = false;
         console.log("Right:" + right);
+        console.log("Middle:" + mid);
         console.log("Left:" + left);
         if (right === 10) {
+            left = 8;
+            mid = 10;
+            right = 0;
+        }
+        else if (mid === 10) {
+            left = 10;
+            mid = 0;
+            right = 1;
+        }
+        else if (left === 10) {
             left = 0;
             mid = 1;
             right = 2;
@@ -121,19 +129,15 @@
 </script>
 
 <div>
+    <img on:mouseenter={() => setTimeout(handleMousemoveLeft, 150)} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
     {#if playing}
-        <img on:mouseenter={() => handleMousemoveLeft()} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
-        <img in:spin="{{duration: 20000}}" on:click={() => onClick()} class="bigCamus" alt="logo" src={Calmuses[mid].calmusIMGHeadphones}>
-        <div on:mouseenter={() => handleMousemoveRight()}>
-            <img  style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
-        </div>
+        <img on:click={() => onClick()} id="bigCamusSpin" alt="logo" src={Calmuses[mid].calmusIMGHeadphones}>
     {:else}
-        <img on:mouseenter={() => handleMousemoveLeft()} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
-        <img on:click={() => onClick()} class="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
-        <div on:mouseenter={() => handleMousemoveRight()}>
-                <img  style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
-        </div>
+        <img on:mouseenter={() => setTimeout(handleMousemoveCenter, 150)}  on:click={() => onClick()} id="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
     {/if}
+    <div on:mouseenter={() => setTimeout(handleMousemoveRight, 150)}>
+        <img  style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
+    </div>
 </div>
 
 <style>
@@ -149,7 +153,7 @@
             max-height: 200px;
             max-width: 200px;
     }
-    .bigCamus {
+    #bigCamus {
             z-index: 1;
             position: sticky;
             margin: 0;
@@ -157,6 +161,71 @@
             align-self: center;
             max-height: 375px;
             max-width: 375px;
+    }
+    #bigCamusSpin {
+        z-index: 1;
+        position: sticky;
+        margin: 0;
+        padding: 0;
+        align-self: center;
+        max-height: 375px;
+        max-width: 375px;
+        -webkit-animation-name: spin;
+        -webkit-animation-duration: 10000ms;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        -moz-animation-name: spin;
+        -moz-animation-duration: 10000ms;
+        -moz-animation-iteration-count: infinite;
+        -moz-animation-timing-function: linear;
+        -ms-animation-name: spin;
+        -ms-animation-duration: 10000ms;
+        -ms-animation-iteration-count: infinite;
+        -ms-animation-timing-function: linear;
+
+        animation-name: spin;
+        animation-duration: 10000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+    }
+    @-ms-keyframes spin {
+        from {
+            -ms-transform: rotate(0deg);
+        }
+
+        to {
+            -ms-transform: rotate(360deg);
+        }
+    }
+
+    @-moz-keyframes spin {
+        from {
+            -moz-transform: rotate(0deg);
+        }
+
+        to {
+            -moz-transform: rotate(360deg);
+        }
+    }
+
+    @-webkit-keyframes spin {
+        from {
+            -webkit-transform: rotate(0deg);
+        }
+
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
     }
 
 </style>
