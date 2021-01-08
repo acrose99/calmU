@@ -138,25 +138,25 @@
 
 <div id="container">
     {#if typing}
-        <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={srcLogo}
-             out:fade="{{delay: 1000, duration: 400}}">
-        <h1 in:typewriter out:fade="{{delay: 1000, duration: 400}}">
+        <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={srcLogo}/>
+
+        <h1 in:typewriter >
             Calming Ambient Noise, for as long as you want.
         </h1>
     {/if}
 
     {#if typeDone}
         <CalmusArray on:notify={handleMessage}/>
-        <h1>Ambience Selected: {type}</h1>
+        <h1 in:fade="{{delay: 4000, duration: 500}}">Ambience Selected: {type}</h1>
         {#if !mousedOver}
-            <h2 in:fade="{{delay: 1500, duration: 400}}" out:fly="{{x: 300, duration: 3000}}" >
+            <h2 in:fade="{{delay: 1000, duration: 400}}" out:fly="{{x: 300, duration: 3000}}" >
                 10 Ambient Backgrounds, one click away.
             </h2>
-            <h2 style="font-weight: bolder" out:fly="{{x: 300, duration: 3000}}">
-                Mouse over Calmus to get started.
-            </h2>
-            <h2 style="font-weight: bolder" out:fly="{{x: 300, duration: 3000}}">
+            <h2 in:fade="{{delay: 2000, duration: 400}}" style="font-weight: bolder" out:fly="{{x: 300, duration: 3000}}">
                 Click to play and pause, scroll to change ambience.
+            </h2>
+            <h2 in:fade="{{delay: 3000, duration: 400}}" style="font-weight: bolder" out:fly="{{x: 300, duration: 3000}}">
+                Mouse over Calmus to get started.
             </h2>
         {/if}
     {/if}

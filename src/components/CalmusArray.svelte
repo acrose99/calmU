@@ -129,13 +129,13 @@
 </script>
 
 <div>
-    <img on:mouseenter={() => setTimeout(handleMousemoveLeft, 150)} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
+    <img in:fade="{{delay: 4000, duration: 500}}" on:mouseenter={() => setTimeout(handleMousemoveLeft, 150)} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
     {#if playing}
         <img on:click={() => onClick()} id="bigCamusSpin" alt="logo" src={Calmuses[mid].calmusIMGHeadphones}>
     {:else}
-        <img on:mouseenter={() => setTimeout(handleMousemoveCenter, 150)}  on:click={() => onClick()} id="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
+        <img in:fade="{{delay: 4000, duration: 500}}" on:mouseenter={() => setTimeout(handleMousemoveCenter, 150)}  on:click={() => onClick()} id="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
     {/if}
-    <div on:mouseenter={() => setTimeout(handleMousemoveRight, 150)}>
+    <div in:fade="{{delay: 4000, duration: 500}}" on:mouseenter={() => setTimeout(handleMousemoveRight, 150)}>
         <img  style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
     </div>
 </div>
