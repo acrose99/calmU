@@ -1,6 +1,6 @@
 <script>
     import CalmusArray from "../components/CalmusArray.svelte";
-    import {fade} from 'svelte/transition';
+    import {fade, fly, crossfade, scale, slide} from 'svelte/transition';
     import {onMount} from 'svelte';
 
     let srcLogo = '../images/Homepage/Logo.svg'
@@ -9,7 +9,8 @@
     let type = "None";
     let typing = false;
     let visible = false;
-    let typeDone = false;
+    let typeDone = true;
+    let mousedOver = false;
 
     function typewriter(node, {speed = 100}) {
         const valid = (
@@ -80,6 +81,7 @@
         type = event.detail.type;
         console.log("Type: " + type);
         changeBackground(type)
+        mousedOver = true;
     }
 
     function setVisible() {
@@ -104,24 +106,28 @@
 </script>
 
 <div id="container">
-    {#if typing}
-        <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={srcLogo}
-             out:fade="{{delay: 1000, duration: 400}}">
-        <h1 in:typewriter out:fade="{{delay: 1000, duration: 400}}">
-            Calming Ambient Noise, for as long as you want.
-        </h1>
-    {/if}
+    <!--{#if typing}-->
+    <!--    <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={srcLogo}-->
+    <!--         out:fade="{{delay: 1000, duration: 400}}">-->
+    <!--    <h1 in:typewriter out:fade="{{delay: 1000, duration: 400}}">-->
+    <!--        Calming Ambient Noise, for as long as you want.-->
+    <!--    </h1>-->
+    <!--{/if}-->
 
     {#if typeDone}
-        <CalmusArray on:notify={handleMessage} calmusType1="Space" calmusType2="Default" calmusType3="Ocean"/>
+        <CalmusArray on:notify={handleMessage}/>
         <h1>Ambience Selected: {type}</h1>
-        <h2 in:fade="{{delay: 1500, duration: 400}}">
-            10 Ambient Backgrounds, one click away.
-        </h2>
-        <h1 style="color: #00f9ff; font-weight: bolder" transition:fade="{{delay: 1500, duration: 400}}">
-            Mouse over Calmus to get started.
-        </h1>
-        <!--{/if}-->
+        {#if !mousedOver}
+            <h2 in:fade="{{delay: 1500, duration: 400}}" out:fly="{{x: 300, duration: 3000}}" >
+                10 Ambient Backgrounds, one click away.
+            </h2>
+            <h2 style="font-weight: bolder" out:fly="{{x: 300, duration: 3000}}">
+                Mouse over Calmus to get started.
+            </h2>
+            <h2 style="font-weight: bolder" out:fly="{{x: 300, duration: 3000}}">
+                Click to play and pause, scroll to change ambience.
+            </h2>
+        {/if}
     {/if}
 </div>
 
@@ -130,39 +136,46 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        color: white;
         justify-content: center;
         text-align: center;
         height: 100%;
     }
 
+    h1 {
+        font-family: "Comfortaa", sans-serif;
+        font-size: 36px;
+    }
+
+    h2 {
+        font-family: "Comfortaa", sans-serif;
+    }
+
     :global(body.blue-mode) {
         background: linear-gradient(180deg, #39B8BF 0%, #006A71 100%);
+        color: white;
     }
 
     :global(body.fire-mode) {
         background: linear-gradient(180deg, rgba(255, 135, 65, 0.71) 0%, rgba(155, 0, 0, 0.67) 100%);
+        color: #2d1a06;
     }
 
     :global(body.city-mode) {
-        background: linear-gradient(180deg, #D6F8FA 0%, rgba(0, 158, 168, 0.73) 100%);
+        background: linear-gradient(180deg, #757575 0%, rgba(0, 110, 117, 0.73) 100%);
+        color: white;
     }
 
     :global(body.forest-mode) {
         background: linear-gradient(180deg, #45E176 0%, #04875F 92.71%);
+        color: #45E176;
     }
 
     :global(body.coffee-mode) {
         background: linear-gradient(180deg, #E4B267 0%, #6B4308 100%);
+        color: burlywood;
     }
-
     :global(body.whiteNoise-mode) {
         background: linear-gradient(180deg, #FCFCFC 0%, #000000 100%);
-    }
-
-    h1 {
         color: white;
-        font-family: "Comfortaa", sans-serif;
-        font-size: 36px;
     }
 </style>

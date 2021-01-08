@@ -1,6 +1,8 @@
 <script>
     import MiniCalmus from "./MiniCalmus.svelte";
     import BigCalmus from "./BigCalmus.svelte";
+    import {fade, fly, crossfade, scale, slide} from 'svelte/transition';
+    import { linear } from 'svelte/easing';
 
     import { createEventDispatcher } from 'svelte';
 
@@ -8,77 +10,53 @@
     let left = 0;
     let mid = 1;
     let right = 2;
-
+    let playing = false;
     let Calmuses = [
         {
-            calmusType: "Cute", calmusIMG: "../images/Calmus/CalmusSpace.png"
+            calmusType: "Space", calmusIMG: "../images/Calmus/CalmusSpace.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPSpace.png"
         },
         {
-            calmusType: "Bad", calmusIMG: "../images/Calmus/CalmusDefault.png"
+            calmusType: "Random", calmusIMG: "../images/Calmus/CalmusDefault.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPDefault.png"
         },
         {
-            calmusType: "Ocean", calmusIMG: "../images/Calmus/CalmusOcean.png"
+            calmusType: "Ocean", calmusIMG: "../images/Calmus/CalmusOcean.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPOcean.png"
         },
         {
-            calmusType: "City", calmusIMG: "../images/Calmus/CalmusCity.png"
+            calmusType: "City", calmusIMG: "../images/Calmus/CalmusCity.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPCity.png"
         },
         {
-            calmusType: "Forest", calmusIMG: "../images/Calmus/CalmusForest.png"
+            calmusType: "Forest", calmusIMG: "../images/Calmus/CalmusForest.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPForest.png"
         },
         {
-            calmusType: "White Noise", calmusIMG: "../images/Calmus/CalmusWhiteNoise.png"
+            calmusType: "White Noise", calmusIMG: "../images/Calmus/CalmusWhiteNoise.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPWhite.png"
         },
         {
-            calmusType: "Coffee", calmusIMG: "../images/Calmus/CalmusCoffee.png"
+            calmusType: "Coffee", calmusIMG: "../images/Calmus/CalmusCoffee.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPCoffee.png"
         },
         {
-            calmusType: "Office", calmusIMG: "../images/Calmus/CalmusOffice.png"
+            calmusType: "Office", calmusIMG: "../images/Calmus/CalmusOffice.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPOffice.png"
         },
         {
-            calmusType: "Library", calmusIMG: "../images/Calmus/CalmusLibrary.png"
+            calmusType: "Library", calmusIMG: "../images/Calmus/CalmusLibrary.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPLibrary.png"
         },
         {
-            calmusType: "Fire", calmusIMG: "../images/Calmus/CalmusFire.png"
+            calmusType: "Fire", calmusIMG: "../images/Calmus/CalmusFire.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPFire.png"
         },
         {
-            calmusType: "Train", calmusIMG: "../images/Calmus/CalmusTrain.png"
+            calmusType: "Train", calmusIMG: "../images/Calmus/CalmusTrain.png",
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPTrain.png"
         },
     ]
-    // let Calmuses = [
-    //     {
-    //         calmusType: "Space", calmusIMG: "../images/Calmus/CalmusSpace.png"
-    //     },
-    //     {
-    //         calmusType: "Default", calmusIMG: "../images/Calmus/CalmusDefault.png"
-    //     },
-    //     {
-    //         calmusType: "Ocean", calmusIMG: "../images/Calmus/CalmusOcean.png"
-    //     },
-    //     {
-    //         calmusType: "City", calmusIMG: "../images/Calmus/CalmusCity.png"
-    //     },
-    //     {
-    //         calmusType: "Forest", calmusIMG: "../images/Calmus/CalmusForest.png"
-    //     },
-    //     {
-    //         calmusType: "White Noise", calmusIMG: "../images/Calmus/CalmusWhiteNoise.png"
-    //     },
-    //     {
-    //         calmusType: "Coffee", calmusIMG: "../images/Calmus/CalmusCoffee.png"
-    //     },
-    //     {
-    //         calmusType: "Office", calmusIMG: "../images/Calmus/CalmusOffice.png"
-    //     },
-    //     {
-    //         calmusType: "Library", calmusIMG: "../images/Calmus/CalmusLibrary.png"
-    //     },
-    //     {
-    //         calmusType: "Fire", calmusIMG: "../images/Calmus/CalmusFire.png"
-    //     },
-    //     {
-    //         calmusType: "Train", calmusIMG: "../images/Calmus/CalmusTrain.png"
-    //     },
-    // ]
     function handleMousemoveLeft() {
         if (left === 0) { //Todo
             mid = 0;
@@ -107,6 +85,18 @@
             type: Calmuses[mid].calmusType
         });
     }
+    function spin(node, { duration }) {
+        return {
+            duration,
+            css: t => {
+                const eased = linear(t);
+
+                return `
+					transform: rotate(${eased * 1080}deg);`
+            }
+        };
+    }
+
     function handleMousemoveRight() {
         console.log("Right:" + right);
         console.log("Left:" + left);
@@ -124,26 +114,26 @@
             type: Calmuses[mid].calmusType
         });
     }
+    function onClick() {
+        playing = playing !== true;
+    }
 
 </script>
 
 <div>
-    <!--{#each {length: 1} as _, i}-->
-<!--            <MiniCalmus Calmuses={Calmuses} direction="left" calmusType={Calmuses[0].calmusType} >-->
-
-<!--            </MiniCalmus>-->
-<!--            <BigCalmus on:notify Calmuses={Calmuses} calmusType={Calmuses[1].calmusType} >-->
-
-<!--            </BigCalmus>-->
-<!--            <MiniCalmus on:notify="{handleMessage}" Calmuses={Calmuses} direction="right" calmusType={Calmuses[2].calmusType} >-->
-
-<!--            </MiniCalmus>-->
-    <!--{/each}-->
+    {#if playing}
         <img on:mouseenter={() => handleMousemoveLeft()} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
-        <img class="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
+        <img in:spin="{{duration: 20000}}" on:click={() => onClick()} class="bigCamus" alt="logo" src={Calmuses[mid].calmusIMGHeadphones}>
+        <div on:mouseenter={() => handleMousemoveRight()}>
+            <img  style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
+        </div>
+    {:else}
+        <img on:mouseenter={() => handleMousemoveLeft()} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
+        <img on:click={() => onClick()} class="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
         <div on:mouseenter={() => handleMousemoveRight()}>
                 <img  style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
         </div>
+    {/if}
 </div>
 
 <style>
@@ -168,4 +158,5 @@
             max-height: 375px;
             max-width: 375px;
     }
+
 </style>
