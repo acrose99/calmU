@@ -15,47 +15,47 @@
     let Calmuses = [
         {
             calmusType: "Space", calmusIMG: "../images/Calmus/CalmusSpace.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPSpace.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusSpace.png"
         },
         {
             calmusType: "Ocean", calmusIMG: "../images/Calmus/CalmusOcean.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPOcean.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusOcean.png"
         },
         {
             calmusType: "Forest", calmusIMG: "../images/Calmus/CalmusForest.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPForest.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusForest.png"
         },
         {
             calmusType: "Fan", calmusIMG: "../images/Calmus/CalmusDefault.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPDefault.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusDefault.png"
         },
         {
             calmusType: "City", calmusIMG: "../images/Calmus/CalmusCity.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPCity.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusCity.png"
         },
         {
             calmusType: "White Noise", calmusIMG: "../images/Calmus/CalmusWhiteNoise.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPWhite.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusWhiteNoise.png"
         },
         {
             calmusType: "Coffee", calmusIMG: "../images/Calmus/CalmusCoffee.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPCoffee.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusCoffee.png"
         },
         {
             calmusType: "Office", calmusIMG: "../images/Calmus/CalmusOffice.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPOffice.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusOffice.png"
         },
         {
             calmusType: "Library", calmusIMG: "../images/Calmus/CalmusLibrary.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPLibrary.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusLibrary.png"
         },
         {
             calmusType: "Fire", calmusIMG: "../images/Calmus/CalmusFire.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPFire.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusFire.png"
         },
         {
             calmusType: "Train", calmusIMG: "../images/Calmus/CalmusTrain.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusHPTrain.png"
+            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusTrain.png"
         },
     ]
     function handleMousemoveLeft() {

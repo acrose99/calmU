@@ -9,7 +9,7 @@
     let type = "None";
     let typing = false;
     let visible = false;
-    let typeDone = true;
+    let typeDone = false;
     let mousedOver = false;
 
     function typewriter(node, {speed = 100}) {
@@ -56,9 +56,25 @@
         if (window.document.body.classList.contains('whiteNoise-mode')) {
             window.document.body.classList.toggle('whiteNoise-mode');
         }
+        if (window.document.body.classList.contains('space-mode')) {
+            window.document.body.classList.toggle('space-mode');
+        }
+        if (window.document.body.classList.contains('office-mode')) {
+            window.document.body.classList.toggle('office-mode');
+        }
+        if (window.document.body.classList.contains('library-mode')) {
+            window.document.body.classList.toggle('library-mode');
+        }
+        if (window.document.body.classList.contains('train-mode')) {
+            window.document.body.classList.toggle('train-mode');
+        }
+        if (window.document.body.classList.contains('fan-mode')) {
+            window.document.body.classList.toggle('fan-mode');
+        }
+        //toggles everything on.
 
-        if (type === "None" || type === "Fan" || type === "Default" || type === "Space" || type === "Ocean" || type ==="Office" || type ===  "Library" || type === "Train") {
-            window.document.body.classList.toggle('blue-mode');
+        if (type === "None" || type === "Default") {
+            window.document.body.classList.toggle('ocean-mode');
         }
         if (type === "City") {
             window.document.body.classList.toggle('city-mode');
@@ -74,6 +90,21 @@
         }
         if (type === "White Noise") {
             window.document.body.classList.toggle('whiteNoise-mode');
+        }
+        if (type === "Space") {
+            window.document.body.classList.toggle('space-mode');
+        }
+        if (type === "Office") {
+            window.document.body.classList.toggle('office-mode');
+        }
+        if (type === "Library") {
+            window.document.body.classList.toggle('library-mode');
+        }
+        if (type === "Library") {
+            window.document.body.classList.toggle('train-mode');
+        }
+        if (type === "Fan") {
+            window.document.body.classList.toggle('fan-mode');
         }
     }
 
@@ -106,13 +137,13 @@
 </script>
 
 <div id="container">
-    <!--{#if typing}-->
-    <!--    <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={srcLogo}-->
-    <!--         out:fade="{{delay: 1000, duration: 400}}">-->
-    <!--    <h1 in:typewriter out:fade="{{delay: 1000, duration: 400}}">-->
-    <!--        Calming Ambient Noise, for as long as you want.-->
-    <!--    </h1>-->
-    <!--{/if}-->
+    {#if typing}
+        <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={srcLogo}
+             out:fade="{{delay: 1000, duration: 400}}">
+        <h1 in:typewriter out:fade="{{delay: 1000, duration: 400}}">
+            Calming Ambient Noise, for as long as you want.
+        </h1>
+    {/if}
 
     {#if typeDone}
         <CalmusArray on:notify={handleMessage}/>
@@ -150,7 +181,7 @@
         font-family: "Comfortaa", sans-serif;
     }
 
-    :global(body.blue-mode) {
+    :global(body.ocean-mode) {
         background: linear-gradient(180deg, #39B8BF 0%, #006A71 100%);
         color: white;
     }
@@ -161,8 +192,8 @@
     }
 
     :global(body.city-mode) {
-        background: linear-gradient(180deg, #757575 0%, rgba(0, 110, 117, 0.73) 100%);
-        color: white;
+        background: linear-gradient(180deg, #41B6E6 0%, rgba(156, 156, 156, 0.62) 29.17%, rgba(156, 156, 156, 0.62) 70.31%, #41B6E6 100%);
+        color: #4A4C4D;
     }
 
     :global(body.forest-mode) {
@@ -171,11 +202,32 @@
     }
 
     :global(body.coffee-mode) {
-        background: linear-gradient(180deg, #E4B267 0%, #6B4308 100%);
+        background: linear-gradient(180deg, #6B4308 0%, #E4B267 100%);
         color: burlywood;
     }
     :global(body.whiteNoise-mode) {
         background: linear-gradient(180deg, #FCFCFC 0%, #000000 100%);
+        color: white;
+    }
+    :global(body.space-mode) {
+        background: linear-gradient(180deg, #544B84 0%, rgba(30, 22, 79, 0.74) 100%);
+        color: #1E164F;
+    }
+    :global(body.train-mode) {
+        background: linear-gradient(180deg, #B9BBBB 0%, #279DA4 48.44%, #B9BBBB 100%);
+        color: #00848B;
+    }
+    :global(body.library-mode) {
+        background: linear-gradient(180deg, #E9BD8A 0%, #835825 100%);
+        color: #E9BD8A;
+
+    }
+    :global(body.office-mode) {
+        background: linear-gradient(180deg, #C4B3C9 0%, #57495B 100%);
+        color: #BEB0C2;
+    }
+    :global(body.fan-mode) {
+        background: linear-gradient(180deg, #F1FEFF 0%, #279DA4 100%);
         color: white;
     }
 </style>
