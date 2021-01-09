@@ -1,0 +1,15 @@
+{
+  "bundler": "rollup",
+  "shimport": "2.0.4",
+  "assets": {
+    "main": "client.90be0495.js"
+  },
+  "css": {},
+  "dependencies": {
+    "index.svelte": [
+      "index.2445779d.js",
+      "inject_styles.5607aec6.js",
+      "index-d7ffd3cd.css"
+    ]
+  }
+}

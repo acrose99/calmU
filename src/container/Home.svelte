@@ -2,8 +2,7 @@
     import CalmusArray from "../components/CalmusArray.svelte";
     import {fade, fly, crossfade, scale, slide} from 'svelte/transition';
     import {onMount} from 'svelte';
-
-    let srcLogo = '../images/Homepage/Logo.svg'
+    let srcLogo = '../images/Homepage/Logo.svg';
     let srcCalmus = '../images/Calmus/CalmusOcean.png'
 
     let type = "None";

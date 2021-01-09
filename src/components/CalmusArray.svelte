@@ -1,6 +1,4 @@
 <script>
-    import MiniCalmus from "./MiniCalmus.svelte";
-    import BigCalmus from "./BigCalmus.svelte";
     import {fade, fly, crossfade, scale, slide} from 'svelte/transition';
     import { linear } from 'svelte/easing';
     import { tick } from 'svelte';
