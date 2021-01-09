@@ -1,8 +1,8 @@
 /**
- * These declarations tell TypeScript that we allow import of images, e.g.
+ * These declarations tell TypeScript that we allow import of w, e.g.
  * ```
 		<script lang='ts'>
-			import successkid from 'images/successkid.jpg';
+			import successkid from 'w/successkid.jpg';
 		</script>
 
 		<img src="{successkid}">

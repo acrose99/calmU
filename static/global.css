@@ -60,8 +60,3 @@ button:not(:disabled):active {
 button:focus {
 	border-color: #666;
 }
-@font-face {
-	font-family: "Comfortaa";
-	src: url("fonts/Comfortaa-Regular.ttf") format("truetype"),
-	url("fonts/Comfortaa-Regular.ttf") format("truetype");
-}

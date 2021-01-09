@@ -3,9 +3,9 @@
     import {fade, fly, crossfade, scale, slide} from 'svelte/transition';
     import {onMount} from 'svelte';
 
-    let srcLogo = '../images/Homepage/Logo.svg'
-    let srcCalmus = '../images/Calmus/CalmusOcean.png'
 
+
+    import Logo from "images/Homepage/Logo.svg"
     let type = "None";
     let typing = false;
     let visible = false;
@@ -138,7 +138,7 @@
 
 <div id="container">
     {#if typing}
-        <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={srcLogo}/>
+        <img in:fade="{{delay: 200, duration: 400}}" class="logo" alt="Logo" src={Logo}/>
 
         <h1 in:typewriter >
             Calming Ambient Noise, for as long as you want.

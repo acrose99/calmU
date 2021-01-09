@@ -34,7 +34,7 @@ export default {
 				}
 			}),
 			url({
-				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				sourceDir: path.resolve(__dirname, 'src/node_modules/w'),
 				publicPath: '/client/'
 			}),
 			resolve({
@@ -86,7 +86,7 @@ export default {
 				emitCss: false
 			}),
 			url({
-				sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				sourceDir: path.resolve(__dirname, 'src/node_modules/w'),
 				publicPath: '/client/',
 				emitFiles: false // already emitted by client build
 			}),

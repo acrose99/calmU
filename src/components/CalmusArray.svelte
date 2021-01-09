@@ -1,20 +1,40 @@
 <script>
-    import {fade, fly, crossfade, scale, slide} from 'svelte/transition';
-    import {linear} from 'svelte/easing';
-    import {tick} from 'svelte';
-    import { spring } from 'svelte/motion';
+import {fade} from 'svelte/transition';
+    import {createEventDispatcher} from 'svelte';
+    import {spring} from 'svelte/motion';
+    import {onMount} from 'svelte';
 
-    let coords = spring({ x: 50, y: 50 }, {
-        stiffness: 0.5,
-        damping: 0.8
-    });
-    let audioObj = new Audio("../audio/train1.mp3");
+    //asset imports
+    import CalmusCity from 'images/Calmus/CalmusCity.png'
+    import CalmusCoffee from 'images/Calmus/CalmusCoffee.png'
+    import CalmusFire from 'images/Calmus/CalmusFire.png'
+    import CalmusLibrary from 'images/Calmus/CalmusLibrary.png'
+    import CalmusOcean from 'images/Calmus/CalmusOcean.png'
+    import CalmusOffice from 'images/Calmus/CalmusOffice.png'
+    import CalmusRain from 'images/Calmus/CalmusRain.png'
+    import CalmusSpace from 'images/Calmus/CalmusSpace.png'
+    import CalmusTrain from 'images/Calmus/CalmusTrain.png'
+    import CalmusForest from 'images/Calmus/CalmusForest.png'
+    import CalmusWhiteNoise from 'images/Calmus/CalmusWhiteNoise.png'
+    import CalmusCityHP from 'images/CalmusHeadphones/CalmusCity.png'
+    import CalmusCoffeeHP from 'images/CalmusHeadphones/CalmusCoffee.png'
+    import CalmusFireHP from 'images/CalmusHeadphones/CalmusFire.png'
+    import CalmusLibraryHP from 'images/CalmusHeadphones/CalmusLibrary.png'
+    import CalmusOceanHP from 'images/CalmusHeadphones/CalmusOcean.png'
+    import CalmusOfficeHP from 'images/CalmusHeadphones/CalmusOffice.png'
+    import CalmusRainHP from 'images/CalmusHeadphones/CalmusRain.png'
+    import CalmusSpaceHP from 'images/CalmusHeadphones/CalmusSpace.png'
+    import CalmusTrainHP from 'images/CalmusHeadphones/CalmusTrain.png'
+    import CalmusForestHP from 'images/CalmusHeadphones/CalmusForest.png'
+    import CalmusWhiteNoiseHP from 'images/CalmusHeadphones/CalmusWhiteNoise.png'
+
+    let audioObj;
+
+    let volume = .5;
 
     function handleMessage(event) {
         alert(event.detail.text);
     }
-
-    import {createEventDispatcher} from 'svelte';
 
     const dispatch = createEventDispatcher();
     let left = 0;
@@ -23,53 +43,56 @@
     let playing = false;
     let Calmuses = [
         {
-            calmusType: "Space", calmusIMG: "../images/Calmus/CalmusSpace.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusSpace.png"
+            calmusType: "Space", calmusIMG: CalmusSpace,
+            calmusIMGHeadphones: CalmusSpaceHP
         },
         {
-            calmusType: "Ocean", calmusIMG: "../images/Calmus/CalmusOcean.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusOcean.png"
+            calmusType: "Ocean", calmusIMG: CalmusOcean,
+            calmusIMGHeadphones: CalmusOceanHP
         },
         {
-            calmusType: "Forest", calmusIMG: "../images/Calmus/CalmusForest.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusForest.png"
+            calmusType: "Forest", calmusIMG: CalmusForest,
+            calmusIMGHeadphones: CalmusForestHP
         },
         {
-            calmusType: "Fan", calmusIMG: "../images/Calmus/CalmusDefault.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusDefault.png"
+            calmusType: "Rain", calmusIMG: CalmusRain,
+            calmusIMGHeadphones: CalmusRainHP
         },
         {
-            calmusType: "City", calmusIMG: "../images/Calmus/CalmusCity.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusCity.png"
+            calmusType: "City", calmusIMG: CalmusCity,
+            calmusIMGHeadphones: CalmusCityHP
         },
         {
-            calmusType: "White Noise", calmusIMG: "../images/Calmus/CalmusWhiteNoise.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusWhiteNoise.png"
+            calmusType: "White Noise", calmusIMG: CalmusWhiteNoise,
+            calmusIMGHeadphones: CalmusWhiteNoiseHP
         },
         {
-            calmusType: "Coffee", calmusIMG: "../images/Calmus/CalmusCoffee.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusCoffee.png"
+            calmusType: "Coffee", calmusIMG: CalmusCoffee,
+            calmusIMGHeadphones: CalmusCoffeeHP
         },
         {
-            calmusType: "Office", calmusIMG: "../images/Calmus/CalmusOffice.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusOffice.png"
+            calmusType: "Office", calmusIMG: CalmusOffice,
+            calmusIMGHeadphones: CalmusOfficeHP
         },
         {
-            calmusType: "Library", calmusIMG: "../images/Calmus/CalmusLibrary.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusLibrary.png"
+            calmusType: "Library", calmusIMG: CalmusLibrary,
+            calmusIMGHeadphones: CalmusLibraryHP
         },
         {
-            calmusType: "Fire", calmusIMG: "../images/Calmus/CalmusFire.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusFire.png"
+            calmusType: "Fire", calmusIMG: CalmusFire,
+            calmusIMGHeadphones: CalmusFireHP
         },
         {
-            calmusType: "Train", calmusIMG: "../images/Calmus/CalmusTrain.png",
-            calmusIMGHeadphones: "../images/CalmusHeadphones/CalmusTrain.png"
+            calmusType: "Train", calmusIMG: CalmusTrain,
+            calmusIMGHeadphones: CalmusTrainHP
         },
     ]
 
     function handleMousemoveLeft() {
-        setTimeout(() => audioObj.pause(), 250)
+        if (typeof audioObj.src != "undefined") {
+            audioObj.src = "";
+        }
+        playing = false;
         if (left === 0) { //Todo
             mid = 0;
             left = 10;
@@ -103,7 +126,10 @@
     }
 
     function handleMousemoveRight() {
-        setTimeout(() => audioObj.pause(), 250)
+        if (typeof audioObj.src != "undefined") {
+            audioObj.src = "";
+        }
+        // setTimeout(() => audioObj.pause(), 250)
         playing = false;
         console.log("Right:" + right);
         console.log("Middle:" + mid);
@@ -130,35 +156,57 @@
         });
     }
 
-    function onClick() {
-        audioObj.volume = coords.stiffness;
-        if (audioObj.paused === false) {
-            setTimeout(() => audioObj.pause(), 250)
-        } else if (audioObj.played === false) {
-            setTimeout(() => audioObj.play(), 250)
-        } else {
-            audioObj.play();
+    function chooseAudio() {
+        if (Calmuses[mid].calmusType === 'Ocean' || Calmuses[mid].calmusType === 'Train') {
+            audioObj = new Audio("../audio/furtado.mp3");
         }
-        playing = playing !== true;
+        else if (Calmuses[mid].calmusType === 'Rain') {
+            audioObj = new Audio("../audio/furtado.mp3");
+        }
+        new Promise(() => {
+            audioObj.volume = volume;
+            audioObj.oncanplay = () => {
+                audioObj.play();
+            };
+        })
     }
+    function changeVolume() {
+        console.log(volume);
+        audioObj.volume = volume;
+    }
+    async function onClickPlay() {
+        playing = playing !== true;
+        console.log(playing);
+        await chooseAudio();
+        // if (Calmuses[mid].calmusType === 'Ocean') {
+            // audioObj.src = '../audio/train.mp3';
+    }
+function onClickPause() {
+    playing = false;
+    audioObj.pause();
+}
+    onMount(async () => {
+        audioObj = new Audio("../audio/furtado.mp3");
+    });
 
 </script>
 
 <div>
     <img in:fade="{{delay: 4000, duration: 500}}" on:mouseenter={() => setTimeout(handleMousemoveLeft, 150)} style="left: 50px" class="smallCamus" alt="logo" src={Calmuses[left].calmusIMG}>
     {#if playing}
-        <img on:click={() => onClick()} id="bigCamusSpin" alt="logo" src={Calmuses[mid].calmusIMGHeadphones}>
+        <img on:click={() => onClickPause()}  id="bigCamusSpin" alt="logo" src={Calmuses[mid].calmusIMGHeadphones}>
     {:else}
-        <img  on:mouseenter={() => setTimeout(handleMousemoveCenter, 150)}  on:click={() => onClick()} id="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
+        <img  on:mouseenter={() => setTimeout(handleMousemoveCenter, 150)}   on:click={() => onClickPlay()}  id="bigCamus" alt="logo" src={Calmuses[mid].calmusIMG}>
     {/if}
     <div in:fade="{{delay: 4000, duration: 500}}" on:mouseenter={() => setTimeout(handleMousemoveRight, 150)}>
-        <img  style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
+        <img style="right: 50px" class="smallCamus" alt="logo" src={Calmuses[right].calmusIMG}>
+<!--        src={Calmuses[right].calmusIMG}-->
     </div>
 </div>
 
-<label>
-    <h3>Volume ({coords.stiffness})</h3>
-    <input bind:value={coords.stiffness} type="range" min="0" max="1" step="0.01">
+<label in:fade="{{delay: 4000, duration: 500}}">
+    <h3>Volume ({volume})</h3>
+    <input on:input={changeVolume} bind:value={volume} type="range" min="0" max="1" step="0.01">
 </label>
 
 

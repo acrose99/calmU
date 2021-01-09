@@ -1,5 +1,5 @@
 {
-  "name": "TODO",
+  "name": "calmu",
   "description": "TODO",
   "version": "0.0.1",
   "scripts": {
@@ -11,6 +11,7 @@
   "dependencies": {
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
+    "audio": "^1.2.0",
     "compression": "^1.7.1",
     "polka": "next",
     "rollup-plugin-svelte": "^7.0.0",
@@ -21,6 +22,7 @@
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@rollup/plugin-replace": "^2.3.4",
     "@rollup/plugin-url": "^6.0.0",
+    "images": "^3.2.3",
     "sapper": "^0.28.0",
     "svelte": "^3.17.3"
   },
