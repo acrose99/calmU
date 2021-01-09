@@ -2,49 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7f86ffe1-8285-477d-aa26-6c129363cf01" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rollup.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/rollup.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ambient.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/ambient.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/build-templates.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CalmusArray.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CalmusArray.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/node_modules/images/successkid.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/_error.svelte" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/audio/train1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/Comfortaa-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/Comfortaa-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/Comfortaa-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/Comfortaa-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/fonts/Comfortaa-SemiBold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusCity.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusCoffee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusDefault.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusFire.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusForest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusLibrary.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusOcean.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusOffice.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusRain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusSpace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusTrain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Calmus/CalmusWhiteNoise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusCity.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusCoffee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusDefault.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusFire.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusForest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusLibrary.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusOcean.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusOffice.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusRain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusSpace.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusTrain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/CalmusWhiteNoise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/CalmusHeadphones/Frame 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/Homepage/Logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,11 +32,13 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github/workflows" />
+      <recent name="$PROJECT_DIR$/.github" />
       <recent name="$PROJECT_DIR$/static" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -85,9 +49,20 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="export" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="export" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.export" />
       </list>
     </recent_temporary>
   </component>
@@ -101,9 +76,21 @@
       <updated>1610215883523</updated>
       <workItem from="1610215884598" duration="305000" />
     </task>
+    <task id="LOCAL-00001" summary="audio blows ass but I really dont feel like coding right now">
+      <created>1610235113009</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610235113009</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="audio blows ass but I really dont feel like coding right now" />
+    <option name="LAST_COMMIT_MESSAGE" value="audio blows ass but I really dont feel like coding right now" />
   </component>
 </project>
