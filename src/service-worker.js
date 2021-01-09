@@ -70,12 +70,12 @@ self.addEventListener('fetch', event => {
                 // set this variable to true for them and they will only be fetched once.
                 const cachedAsset = isStaticAsset && await caches.match(event.request);
 
-                // for pages, you might want to serve a shell `service-worker-index.html` file,
+                // for pages, you might want to serve a shell `service-worker-template.html` file,
                 // which Sapper has generated for you. It's not right for every
                 // app, but if it's right for yours then uncomment this section
                 /*
                 if (!cachedAsset && url.origin === self.origin && routes.find(route => route.pattern.test(url.pathname))) {
-                    return caches.match('/service-worker-index.html');
+                    return caches.match('/service-worker-template.html');
                 }
                 */
 

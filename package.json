@@ -5,7 +5,8 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv static",
-    "export": "sapper export --basepath calmU --legacy"
+    "deploy": "gh-pages -d __sapper__/export/calmU -r https://$GH_TOKEN@github.com/acrose99/calmU.git",
+    "export": "sapper export --basepath index.html calmU --legacy"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

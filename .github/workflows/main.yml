@@ -1,26 +1,19 @@
-name: Build and Deploy
+name: Deploy
+
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+
 jobs:
-  build-and-deploy:
+  publish-gh-pages:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
-          persist-credentials: false
-
-      - name: Use Node.js '12.x'
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - run: npm install
-      - run: npm run export
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.pat }}
-          BRANCH: gh-pages
-          FOLDER: __sapper__/export/calmU
+          node-version: 12
+      - run: npm ci
+      - run: git config user.name "Alex Rose" && git config user.email "acrosemail@gmail.com"
+      - run: npm run deploy
+        env:
+          GH_TOKEN: ${{secrets.SECRET_GITHUB_TOKEN}}
