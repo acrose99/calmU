@@ -163,6 +163,9 @@ import {fade} from 'svelte/transition';
         else if (Calmuses[mid].calmusType === 'Rain') {
             audioObj = new Audio("../audio/furtado.mp3");
         }
+        else {
+            audioObj = new Audio("../audio/furtado.mp3");
+        }
         new Promise(() => {
             audioObj.volume = volume;
             audioObj.oncanplay = () => {
@@ -185,9 +188,9 @@ function onClickPause() {
     playing = false;
     audioObj.pause();
 }
-    onMount(async () => {
+onMount(async () => {
         audioObj = new Audio("../audio/furtado.mp3");
-    });
+});
 
 </script>
 
