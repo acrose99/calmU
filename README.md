@@ -1,7 +1,18 @@
 
-# The site is live and thus I have no recorded demo. 
+# It's a site so I dont really need a demo.  
 
-[Click here for the site](https://calm-u-da3wllz4n.vercel.app/)
+For now vercel (my host), is screwed up because of the size of my audio files. But the URL is linked in the top right (https://calm-u.acrose99.vercel.app/)
+
+It's been hell troubleshooting this because my internet connection has been awful and it takes 4 hours to deploy. 
+
+If you are kind enough, cloning the project and running it locally *works way better*. 
+
+Steps to run locally;
+1. Clone the repo.
+2. ```cd calmU```
+3. ```npm install```
+4. ```npm dev```
+5. go to your localhost as prompted. 
 
 ##  Short abstract of the project
 CalmU, is a web app for listening to Ambience noises. It’s meant to be put in the background, although most of the work was making a pleasant UI experience. 
